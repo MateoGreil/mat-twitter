@@ -1,0 +1,13 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      .nav-collapse
+        %ul.nav
+          %li= link_to "Messages List", messages_path
+          %li= link_to "Users List", users_path
+          %li= link_to "Me", user_path(@user)
+          %li= link_to "Cart"
