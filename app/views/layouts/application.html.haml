@@ -7,11 +7,11 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = nav_bar brand: "MatTwitter", brand_link: root_path do
-      = menu_group do
-        = menu_item "Profil", root_path
-        = menu_item "All messages", root_path
-        = menu_item "Message from user", root_path
 
+    - if @current_user
+      = render "navbar/connected"
+    - else
+      = render "navbar/disconnected"
 
-    = yield
+    %section.container
+      = yield
