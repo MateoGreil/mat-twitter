@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     end
 
     def create
-        @user = User.find_by(id: session[:current_user_id])
+        @user = User.find(params[:user_id])
         @message = @user.messages.create(message_params)
         redirect_to user_path(@user)
     end
