@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 2019_09_11_131037) do
 
   create_table "messages", force: :cascade do |t|
     t.text "text"
+
+    t.references :user, null: false, foreign_key: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
