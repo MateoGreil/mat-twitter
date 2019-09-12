@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title MatTwitter
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    = nav_bar brand: "MatTwitter", brand_link: root_path do
+      = menu_group do
+        = menu_item "Profil", root_path
+        = menu_item "All messages", root_path
+        = menu_item "Message from user", root_path
+
+
+    = yield
