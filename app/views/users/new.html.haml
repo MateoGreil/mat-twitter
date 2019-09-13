@@ -1,18 +1,22 @@
-%form
-  .form-group
-    %label{:for => "inputEmail"} Email address
-    %input#inputEmail.form-control{"aria-describedby" => "emailHelp", :placeholder => "Enter email", :type => "email"}/
-    %small#emailHelp.form-text.text-muted We'll share your email with huge company for money.
-  .form-group
-    %label{:for => "inputUsername"} Username
-    %input#InputUsername.form-control{:placeholder => "Username", :type => "username"}/
-  .form-group
-    %label{:for => "inputPassword1"} Password
-    %input#inputPassword1.form-control{:placeholder => "Password", :type => "password"}/
-  .form-group
-    %label{:for => "inputPassword2"} Confirm Password
-    %input#exampleInputPassword2.form-control{:placeholder => "Password", :type => "password"}/
-  .form-group.form-check
-    %input#check.form-check-input{:type => "checkbox"}/
-    %label.form-check-label{:for => "check"} I accept the condition d'utilisation
-  %button.btn.btn-primary{:type => "submit"} Submit
+
+= form_for @user, url: signup_path do |form|
+  %p
+    = form.label :email
+    %br/
+    = form.text_field :email, class: 'form-control', type: 'email'
+  %p
+    = form.label :name
+    %br/
+    = form.text_field :name, class: 'form-control', type: 'name'
+  %p
+    = form.label :password, value: ''
+    %br/
+    = form.text_field :password, class: 'form-control', type: 'password', value: ''
+  %p
+    = form.label :password_confirmation, value: ''
+    %br/
+    = form.text_field :password_confirmation, value: '', class: 'form-control', type: 'password'
+  %p
+    = form.submit class: 'btn btn-primary'
+
+= @user.errors.full_messages
