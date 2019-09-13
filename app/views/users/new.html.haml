@@ -1,4 +1,7 @@
 
+- if @user.errors.any?
+  = @user.errors.full_messages
+
 = form_for @user, url: signup_path do |form|
   %p
     = form.label :email
@@ -9,14 +12,13 @@
     %br/
     = form.text_field :name, class: 'form-control', type: 'name'
   %p
-    = form.label :password, value: ''
+    = form.label :password
     %br/
-    = form.text_field :password, class: 'form-control', type: 'password', value: ''
+    = form.text_field :password, class: 'form-control', value: '', type: 'password'
   %p
-    = form.label :password_confirmation, value: ''
+    = form.label :password_confirmation
     %br/
-    = form.text_field :password_confirmation, value: '', class: 'form-control', type: 'password'
+    = form.text_field :password_confirmation, class: 'form-control', type: 'password', value: ''
   %p
     = form.submit class: 'btn btn-primary'
 
-= @user.errors.full_messages

@@ -5,10 +5,15 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new(user_params)
-        if @user.save
-            redirect_to root_path
+        @user = User.new(user_params.except(:password_confirmation))
+        if user_params[:password_confirmation] == user_params[:password]    
+            if @user.save
+                redirect_to root_path
+            else
+                render 'new'
+            end
         else
+            @user.errors.add(:password, 'Password correspond pas')
             render 'new'
         end
     end
@@ -19,6 +24,6 @@ class UsersController < ApplicationController
 
     private
         def user_params
-            @user_params ||= params.require(:user).permit(:email, :name, :password, :confirm_password)
+            @user_params ||= params.require(:user).permit(:email, :name, :password, :password_confirmation)
         end
 end
